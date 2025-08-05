@@ -1,5 +1,4 @@
 import { INodeProperties } from "n8n-workflow";
-// import { pagination } from "../../utilities/commonProperties";
 
 const description: INodeProperties[] = [
 	{
@@ -51,10 +50,9 @@ const description: INodeProperties[] = [
 							limit: 500,
 						},
 					},
-					// operations: pagination,
-					// send: {
-					// 	paginate: true,
-					// },
+					send: {
+						paginate: true,
+					},
 				}
 			},
 		],

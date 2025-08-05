@@ -1,5 +1,4 @@
 import { INodeProperties } from "n8n-workflow";
-// import { pagination } from "../../utilities/commonProperties";
 
 const description: INodeProperties[] = [
 	{
@@ -51,10 +50,9 @@ const description: INodeProperties[] = [
 							limit: 500,
 						},
 					},
-					// operations: pagination,
-					// send: {
-					// 	paginate: true,
-					// },
+					send: {
+						paginate: true,
+					},
 				}
 			},
 		],
@@ -82,10 +80,10 @@ const description: INodeProperties[] = [
 				type: 'number',
 				default: undefined,
 				routing: {
-					request: {
-						qs: {
-							'organization_id': "={{$value}}"
-						},
+					send: {
+						property: "organization_id",
+						value: "={{$value}}",
+						type: "query",
 					},
 				},
 			},
@@ -100,10 +98,10 @@ const description: INodeProperties[] = [
 					{ name: 'Yearly', value: 'yearly_summary' },
 				],
 				routing: {
-					request: {
-						qs: {
-							type: "={{$value}}"
-						},
+					send: {
+						property: "type",
+						value: "={{$value}}",
+						type: "query",
 					},
 				},
 			},

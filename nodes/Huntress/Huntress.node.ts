@@ -7,6 +7,8 @@ import * as billingReport from './actions/billing-report';
 import * as incidentReport from './actions/incident-report';
 import * as organization from './actions/organization';
 import * as summaryReport from './actions/summary-report';
+import * as signal from './actions/signals';
+import { huntressApiPagination } from "./utilities/GenericFunctions";
 
 export class Huntress implements INodeType {
 	description: INodeTypeDescription = {
@@ -35,6 +37,21 @@ export class Huntress implements INodeType {
 				'Accept': 'application/json',
 			},
 		},
+		requestOperations: {
+			pagination: huntressApiPagination,
+			// pagination: {
+			// 	type: 'generic',
+			// 	properties: {
+			// 		continue: "={{ $response.body.pagination.next_page }}",
+			// 		request: {
+			// 			qs: {
+			// 				page: "={{ $response.body.pagination.next_page }}",
+			// 				limit: 500,
+			// 			},
+			// 		},
+			// 	},
+			// },
+		},
 		properties: [
 			{
 				displayName: 'Resource',
@@ -47,6 +64,7 @@ export class Huntress implements INodeType {
 					{ name: 'Billing Report', value: 'billingReport'},
 					{ name: 'Incident Report', value: 'incidentReport'},
 					{ name: 'Organization', value: 'organization' },
+					{ name: 'Signal', value: 'signal'},
 					{ name: 'Summary Report', value: 'summaryReport'},
 				],
 				default: 'account',
@@ -56,6 +74,7 @@ export class Huntress implements INodeType {
 			...billingReport.description,
 			...incidentReport.description,
 			...organization.description,
+			...signal.description,
 			...summaryReport.description,
 		],
 	};
