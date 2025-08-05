@@ -2,12 +2,20 @@
 
 This is an n8n community node to work with the Huntress API in your n8n workflows.
 
-- [Installation](#installation)
-- [Operations](#operations)
-- [Credentials](#credentials)
-- [Compatibility](#compatibility)
-- [Resources](#resources)
-- [Funding](#funding)
+- [n8n-nodes-huntress](#n8n-nodes-huntress)
+	- [Installation](#installation)
+	- [Operations](#operations)
+		- [Account](#account)
+		- [Organization](#organization)
+		- [Agent](#agent)
+		- [Signals](#signals)
+		- [Incident Report](#incident-report)
+		- [Summary Report](#summary-report)
+		- [Billing Report](#billing-report)
+	- [Credentials](#credentials)
+	- [Compatibility](#compatibility)
+	- [Resources](#resources)
+	- [Funding](#funding)
 
 ## Installation
 
@@ -28,6 +36,10 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 * Get All - List agents based on filters
 * Get - Retrieve details about a single agent
+
+### Signals
+* Get All - List signals based on filters
+* Get - Retrieve details about a single signal
 
 ### Incident Report
 
