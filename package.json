@@ -17,8 +17,7 @@
     "url": "https://github.com/davejlong/n8n-nodes-huntress.git"
   },
   "engines": {
-    "node": ">=18.10",
-    "pnpm": ">=9.1"
+    "node": ">=18.10"
   },
   "packageManager": "pnpm@9.1.4",
   "main": "index.js",
