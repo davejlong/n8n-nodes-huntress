@@ -1,4 +1,5 @@
 import { INodeProperties } from "n8n-workflow";
+import { huntressRootProperty } from "../../utilities/GenericFunctions";
 
 const description: INodeProperties[] = [
 	{
@@ -13,6 +14,19 @@ const description: INodeProperties[] = [
 		},
 		options: [
 			{
+				name: "Get",
+				value: "get",
+				action: "Get signal",
+				routing: {
+					request: {
+						url: "=/signals/{{$parameter.id}}",
+					},
+					output: {
+						postReceive: [huntressRootProperty('signal')],
+					},
+				},
+			},
+			{
 				name: "Get Many",
 				value: "getAll",
 				action: "Get signals",
@@ -21,12 +35,7 @@ const description: INodeProperties[] = [
 						url: "/signals",
 					},
 					output: {
-						postReceive: [
-							{
-								type: "rootProperty",
-								properties: { property: "signals" }
-							},
-						],
+						postReceive: [huntressRootProperty('signals')],
 					},
 					send: {
 						paginate: true,
@@ -127,6 +136,21 @@ const description: INodeProperties[] = [
 			},
 		],
 	},
+	/**
+	 * Get filter parameters
+	 */
+	{
+		displayName: 'Signal ID',
+		name: 'id',
+		type: 'number',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['signal'],
+				operation: ['get'],
+			}
+		},
+	}
 ];
 
 export { description }

@@ -1,4 +1,5 @@
 import { INodeProperties } from "n8n-workflow";
+import { huntressRootProperty } from "../../utilities/GenericFunctions";
 
 const description: INodeProperties[] = [
 	{
@@ -23,12 +24,7 @@ const description: INodeProperties[] = [
 				action: 'Get billing report',
 				routing: {
 					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: { property: 'billing_report' }
-							}
-						]
+						postReceive: [huntressRootProperty('billing_report')]
 					},
 				}
 			},
@@ -38,12 +34,7 @@ const description: INodeProperties[] = [
 				action: 'Get billing reports',
 				routing: {
 					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: { property: 'billing_reports' }
-							}
-						]
+						postReceive: [huntressRootProperty('billing_reports')]
 					},
 					request: {
 						qs: {

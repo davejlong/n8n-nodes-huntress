@@ -27,3 +27,12 @@ export async function huntressApiPagination(
 
 	return responseData;
 }
+
+export function huntressRootProperty(property: string): IPostReceiveRootProperty {
+	return  {
+		type: "rootProperty",
+		properties: {
+			property: property,
+		},
+	};
+}
